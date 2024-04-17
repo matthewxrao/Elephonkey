@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Elephonkey.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mylogin="clr-namespace:Elephonkey.Views"
+    Shell.FlyoutBehavior="Flyout"
+    x:Name="MyAppShell">
+
+    <FlyoutItem Route="Login" x:Name="MyLoginPage">
+        <ShellContent ContentTemplate="{DataTemplate mylogin:LoginPage}"/>
+    </FlyoutItem>
+    
+    <ShellContent x:Name="MyDashboardPage"
+        ContentTemplate="{DataTemplate mylogin:DashboardPage}"
+        Route="Dashboard" />
+
+</Shell>

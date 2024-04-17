@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elephonkey.Views.LoginPage"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.TabBarIsVisible="False"
+             Title="">
+    
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="0" Padding="25,45">
+
+            <Image Grid.Column="1" Source="elephonkey.png" HeightRequest="175" WidthRequest="200"/>
+
+            <VerticalStackLayout Margin="0,50,0,15" BackgroundColor="WhiteSmoke">
+                <Label Text="Email" TextColor="DimGray" Padding="12,8,0,0"/>
+                <StackLayout Padding="8,0">
+                    <Entry Text="{Binding MyloginRequestModel.UserName}" Margin="{OnPlatform Android='0,0', iOS='0,10'}" FontSize="18"/>
+                </StackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Margin="0,5,0,0" BackgroundColor="WhiteSmoke">
+                <Label Text="Password" TextColor="DimGray" Padding="12,8,0,0"/>
+                <StackLayout Padding="8,0">
+                    <Entry Text="{Binding MyloginRequestModel.Password}" Margin="{OnPlatform Android='0,0', iOS='0,10'}" IsPassword="True" FontSize="15"/>
+                </StackLayout>
+            </VerticalStackLayout>
+
+            <Button HeightRequest="40" Text="Forgot Password" FontSize="14" TextColor="DodgerBlue" Command="{Binding ForgotPasswordCommand}" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+
+            <Button Margin="0,150,0,0" HeightRequest="60" Text="Login" CornerRadius="5" Command="{Binding LoginCommand}" BackgroundColor="Red" TextColor="White"/>
+
+            <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Need an account?" FontSize="12" TextColor="DimGray" Padding="32,12"/>
+                <Button Grid.Column="1" HeightRequest="40" Text="Create Account" FontSize="12" TextColor="DodgerBlue" Command="{Binding CreateAccountCommand}" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
