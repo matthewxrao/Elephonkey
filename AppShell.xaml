@@ -5,14 +5,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mylogin="clr-namespace:Elephonkey.Views"
     Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="False"
     x:Name="MyAppShell">
 
     <FlyoutItem Route="Login" x:Name="MyLoginPage">
         <ShellContent ContentTemplate="{DataTemplate mylogin:LoginPage}"/>
     </FlyoutItem>
-    
-    <ShellContent x:Name="MyDashboardPage"
-        ContentTemplate="{DataTemplate mylogin:DashboardPage}"
-        Route="Dashboard" />
+
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent x:Name="MyHomePage"
+                Title="Home"
+                ContentTemplate="{DataTemplate mylogin:HomePage}"
+                Route="Home" 
+                Icon="home.svg"/>
+        <ShellContent x:Name="MySurveyPage"
+                Title="Take Survey"
+                ContentTemplate="{DataTemplate mylogin:SurveyPage}"
+                Route="Survey"
+                Icon="survey.png"/>
+        <ShellContent x:Name="MyArticlesPage"
+                Title="View Articles"
+                ContentTemplate="{DataTemplate mylogin:ArticlesPage}"
+                Route="Articles" 
+                Icon="articles.svg"/>
+        <ShellContent x:Name="MyResultsPage"
+                Title="Results"
+                ContentTemplate="{DataTemplate mylogin:ResultsPage}"
+                Route="Results"
+                Icon="results.svg"/>
+        <ShellContent x:Name="MySettingsPage"
+                Title="Settings"
+                ContentTemplate="{DataTemplate mylogin:SettingsPage}"
+                Route="Settings"
+                Icon="settings.png"/>
+    </FlyoutItem>
+   
 
 </Shell>

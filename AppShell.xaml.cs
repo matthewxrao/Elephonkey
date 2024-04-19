@@ -10,7 +10,7 @@
 
             if(getuserSavedkey == true)
             {
-                MyAppShell.CurrentItem = MyDashboardPage;
+                MyAppShell.CurrentItem = MyHomePage;
             }
             else
             {

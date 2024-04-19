@@ -5,7 +5,7 @@
              Shell.FlyoutBehavior="Disabled"
              Shell.TabBarIsVisible="False"
              Title="">
-    
+
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="25,45">
 

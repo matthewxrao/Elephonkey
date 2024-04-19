@@ -41,7 +41,7 @@ namespace Elephonkey.ViewModels
 
 
 
-            await Shell.Current.GoToAsync(state: "//Dashboard");
+            await Shell.Current.GoToAsync(state: "//Home");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -7,19 +7,19 @@ using System.Windows.Input;
 
 namespace Elephonkey.ViewModels
 {
-    public class DashboardPageViewModel
+    public class SettingsPageViewModel
     {
         public ICommand LogoutCommand { get; }
 
-        public DashboardPageViewModel()
+        public SettingsPageViewModel()
         {
             LogoutCommand = new Command(PerformLogoutOperation);
         }
 
         private async void PerformLogoutOperation(object obj)
         {
+            Preferences.Clear();
             await Shell.Current.GoToAsync("//Login");
-
         }
     }
 }
