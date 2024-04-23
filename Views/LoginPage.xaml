@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="25,45">
 
-            <Image Grid.Column="1" Source="elephonkey.png" HeightRequest="175" WidthRequest="200"/>
+            <Image Source="elephonkey.png" HeightRequest="175" WidthRequest="200"/>
 
             <VerticalStackLayout Margin="0,50,0,15" BackgroundColor="WhiteSmoke">
                 <Label Text="Email" TextColor="DimGray" Padding="12,8,0,0"/>
