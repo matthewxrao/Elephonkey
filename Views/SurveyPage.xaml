@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Elephonkey.Views.SurveyPage"
              Title="">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to survey"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="0" Padding="15,5">
+
+            <Image Source="elephonkey.png" HeightRequest="75"/>
+
+            <Label Text="ooh" HorizontalOptions="Center" FontSize="Large"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Strongly Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="stronglydisagree.png" Command="{Binding StrongDSelected}"/>
+
+                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Somewhat Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="somewhatdisagree.png" Command="{Binding SomewhatDSelected}"/>
+
+                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Neutral" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="neutral.png" Command="{Binding NeutralSelected}"/>
+
+                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Somewhat Disagree"  FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="somewhatagree.png" Command="{Binding SomewhatASelected}"/>
+
+                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Strongly Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="stronglyagree.png" Command="{Binding StrongASelected}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>
