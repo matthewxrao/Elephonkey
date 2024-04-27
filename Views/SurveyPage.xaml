@@ -7,21 +7,44 @@
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="15,5">
 
-            <Image Source="elephonkey.png" HeightRequest="75"/>
+            <Image Source="elephonkey.png" HeightRequest="50"/>
 
-            <Label Text="ooh" HorizontalOptions="Center" FontSize="Large"/>
+            <Label Text="{Binding CurrentQuestion.QuestionText}" Margin="0,50,0,0" Padding="4" HorizontalOptions="Center" FontSize="Medium" MinimumHeightRequest="150" MaximumHeightRequest="150"/>
 
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Strongly Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="stronglydisagree.png" Command="{Binding StrongDSelected}"/>
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
 
-                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Somewhat Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="somewhatdisagree.png" Command="{Binding SomewhatDSelected}"/>
+                <Button Text="Strongly Agree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
+                        BackgroundColor="#F2F2F2"
+                        Padding="4"
+                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        Command="{Binding StronglyAgree}"/>
 
-                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Neutral" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="neutral.png" Command="{Binding NeutralSelected}"/>
+                <Button Text="Slightly Agree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
+                        BackgroundColor="#F2F2F2"
+                        Padding="4"
+                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        Command="{Binding SlightlyAgree}"/>
 
-                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Somewhat Disagree"  FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="somewhatagree.png" Command="{Binding SomewhatASelected}"/>
+                <Button Text="Neutral" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
+                        BackgroundColor="#F2F2F2"
+                        Padding="4"
+                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        Command="{Binding Neutral}"/>
 
-                <Button BorderColor="LightGray" BorderWidth="3" TextColor="Black" FontAttributes="Bold" BackgroundColor="WhiteSmoke" Text="Strongly Disagree" FontSize ="9" ContentLayout="Top,0" VerticalOptions="Start" ImageSource="stronglyagree.png" Command="{Binding StrongASelected}"/>
-            </HorizontalStackLayout>
+                <Button Text="Slightly Disagree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
+                        BackgroundColor="#F2F2F2"
+                        Padding="4"
+                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        Command="{Binding SlightlyDisagree}"/>
+
+
+                <Button Text="Strongly Disagree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black" HorizontalOptions="Center"
+                        BackgroundColor="#F2F2F2"
+                        Padding="4"
+                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        Command="{Binding StronglyDisagree}"/>
+                
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>

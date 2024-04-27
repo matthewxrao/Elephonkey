@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Elephonkey.ViewModels
 {
-    class SurveyPageViewModel
+    public class SurveyPageViewModel
     {
     }
 }
