@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             xmlns:converters="clr-namespace:Elephonkey.Service;assembly=Elephonkey"
              x:Class="Elephonkey.Views.ResultsPage"
              Title="">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to results"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    <ContentPage.Resources>
+        <converters:ColorConverter x:Key="ColorConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="0" Padding="15,5" >
+            <Image Source="elephonkey.png" HeightRequest="50"/>
+
+            <VerticalStackLayout IsVisible="{Binding QuizComplete}">
+                <Label Text="Political Breakdown" FontFamily="PoppinsB" FontSize="25" HorizontalTextAlignment="Center" Margin="0,12,0,0"/>
+
+                <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="ResultChart" HeightRequest="200" Margin="0,10,0,15"/>
+                <Image Source="legend.png" HeightRequest="50"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="5">
+                    <Label Text="Your type is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
+                    <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout IsVisible="{Binding QuizIncomplete}" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Please Complete Survey" FontFamily="PoppinsB"  Margin="0,350,0,0"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>
