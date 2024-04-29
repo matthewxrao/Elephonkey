@@ -9,14 +9,8 @@
 
             <Image Source="elephonkey.png" HeightRequest="50"/>
 
-            <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="10,35,0,0"/>
+            <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="10,25,0,0"/>
             <Label Text="{Binding name}" FontFamily="Serif" FontAttributes="Italic" FontSize="15" Margin="10,0,0,50"/>
-
-            <Label Text="Political Breakdown" FontFamily="PoppinsB" FontSize="30" HorizontalTextAlignment="Center"/>
-
-            <micro:ChartView x:Name="chartView" HeightRequest="300" Margin="0,15,0,20"/>
-
-            <Image Source="legend.png" HeightRequest="50"/>
 
         </VerticalStackLayout>
     </ContentPage.Content>

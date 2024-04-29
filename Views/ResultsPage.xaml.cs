@@ -75,12 +75,49 @@ public partial class ResultsPage : ContentPage
                 LabelMode = LabelMode.None
             };
 
+            UserChart.Chart = new BarChart
+            {
+                Entries = new[]
+                {
+                        new ChartEntry(14823)
+                        {
+                            Label = "Radical",
+                            Color = SKColor.Parse("#43AC16")
+                        },
+                        new ChartEntry(90123)
+                        {
+                            Label = "Liberal",
+                            Color = SKColor.Parse("#144785")
+                        },
+                        new ChartEntry(104234)
+                        {
+                            Label = "Moderate",
+                            Color = SKColor.Parse("#D47DDC")
+                        },
+                        new ChartEntry(89215)
+                        {
+                            Label = "Conservative",
+                            Color = SKColor.Parse("#BB2823")
+                        },
+                        new ChartEntry(20139)
+                        {
+                            Label = "Reactionary",
+                            Color = SKColor.Parse("#BDA127")
+                        }
+                },
+                LabelTextSize = 25,
+                LabelOrientation = Orientation.Horizontal,
+                ShowYAxisLines = true,
+            };
+
             _viewModel.CalculateResult();
         }
         else
         {
             // Clear the chart if quiz is not active
             ResultChart.Chart = null;
+
+            UserChart.Chart = null;
         }
     }
 }

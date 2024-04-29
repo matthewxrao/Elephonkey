@@ -40,7 +40,7 @@ namespace Elephonkey.ViewModels
                     Text = "Anyone should be able to get an abortion.",
                     Answers = new List<Answer>
                     {
-                        new Answer { Text = "Strongly Agree", DemocraticPoints = 3, GreenPoints = 2},
+                        new Answer { Text = "Strongly Agree", DemocraticPoints = 3, GreenPoints = 2}, indexer resu
                         new Answer { Text = "Agree", DemocraticPoints = 2, LibertarianPoints = 1,},
                         new Answer { Text = "Neutral", OtherPoints = 1 },
                         new Answer { Text = "Disagree", RepublicanPoints = 2, LibertarianPoints = 1},
@@ -325,7 +325,7 @@ namespace Elephonkey.ViewModels
 
         // Command method to view results
         [RelayCommand]
-        public void ViewResults()
+        public static void ViewResults()
         {
             // Navigate to the ResultsPage
             Shell.Current.GoToAsync(state: "//Results");
@@ -333,7 +333,7 @@ namespace Elephonkey.ViewModels
 
         // Command method to retake the quiz
         [RelayCommand]
-        public void RetakeQuiz()
+        public static void RetakeQuiz()
         {
             // Reset the final points and quiz status
             FinalPoints.FinalDemocraticPoints = 0;
