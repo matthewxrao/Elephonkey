@@ -40,7 +40,7 @@ namespace Elephonkey.ViewModels
                     Text = "Anyone should be able to get an abortion.",
                     Answers = new List<Answer>
                     {
-                        new Answer { Text = "Strongly Agree", DemocraticPoints = 3, GreenPoints = 2}, indexer resu
+                        new Answer { Text = "Strongly Agree", DemocraticPoints = 3, GreenPoints = 2},
                         new Answer { Text = "Agree", DemocraticPoints = 2, LibertarianPoints = 1,},
                         new Answer { Text = "Neutral", OtherPoints = 1 },
                         new Answer { Text = "Disagree", RepublicanPoints = 2, LibertarianPoints = 1},
