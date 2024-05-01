@@ -5,11 +5,12 @@
              xmlns:models="clr-namespace:Elephonkey.Models"
              xmlns:viewmodels="clr-namespace:Elephonkey.ViewModels"
              x:Class="Elephonkey.Views.HomePage"
+             
              Title="">
 
     <ContentPage.Resources>
         <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">
-            <StackLayout Orientation="Vertical" Margin="20,0,0,10" WidthRequest="200" HeightRequest="200">
+            <StackLayout Orientation="Vertical" Margin="0,0,0,5" WidthRequest="200" HeightRequest="200">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
                 </StackLayout.GestureRecognizers>
@@ -24,44 +25,46 @@
                 </StackLayout>
             </StackLayout>
         </DataTemplate>
+        
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <VerticalStackLayout Spacing="0" Padding="20,5">
+        <VerticalStackLayout Spacing="0" Padding="10,5">
 
             <Image Source="elephonkey.png" HeightRequest="50"/>
 
             <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="0,15,0,0"/>
             <Label Text="{Binding Name}" FontFamily="Serif" FontAttributes="Italic" FontSize="15" Margin="0,0,0,5"/>
+            <Frame BackgroundColor="Transparent" HeightRequest="225">
+                <Frame.Shadow>
+                    <Shadow Brush="Black"
+                            Radius="10"
+                            Opacity="0.2"/>
+                </Frame.Shadow>
+                <StackLayout>
+                    <Label Text="Latest news" FontFamily="PoppinsSB" FontAttributes="Bold" FontSize="15" HorizontalOptions="StartAndExpand"/>
 
-            <StackLayout Orientation="Horizontal" Margin="0,0,0,4">
-                <Label Text="Latest news" FontFamily="NotoSerifBold" FontSize="15" HorizontalOptions="StartAndExpand"/>
-                <Label Text="Show All" HorizontalOptions="End" FontSize="15" TextColor="CornflowerBlue" VerticalOptions="End"/>
-            </StackLayout>
-            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
-            </ScrollView>
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
 
-            <StackLayout Orientation="Horizontal" Margin="0,0,0,4">
-                <Label Text="Headlines" FontFamily="NotoSerifBold" FontSize="15" HorizontalOptions="StartAndExpand"/>
-                <Label Text="Show All" HorizontalOptions="End" FontSize="15" TextColor="CornflowerBlue" VerticalOptions="End"/>
-            </StackLayout>
+            <VerticalStackLayout>
+                <Label Text="Headlines" FontFamily="PoppinsSB" FontAttributes="Bold" FontSize="15" HorizontalOptions="StartAndExpand"/>
 
-            <FlexLayout BindableLayout.ItemsSource="{Binding Headlines}"
-                        Wrap="Wrap"
-                        Margin="20,0">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="#f2f2f2"
-                               BorderColor="Transparent"
-                               CornerRadius="4"
-                               Padding="8,2"
-                               Margin="0,0,4,10">
-                            <Label Text="{Binding .}" FontFamily="Poppins" VerticalOptions="Center"/>
-                        </Frame>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </FlexLayout>
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Headlines}"
+                            Margin="20,0">  
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding .}" FontFamily="Poppins" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+            
 
         </VerticalStackLayout>
     </ContentPage.Content>
