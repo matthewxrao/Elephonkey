@@ -72,14 +72,14 @@ public partial class ResultsPage : ContentPage
                             Color = SKColor.Parse("#b34bc4")
                         } 
                 },
-                LabelMode = LabelMode.None
+                LabelMode = LabelMode.None,
             };
 
             UserChart.Chart = new BarChart
             {
                 Entries = new[]
                 {
-                        new ChartEntry(14823)
+                        new ChartEntry(24823)
                         {
                             Label = "Radical",
                             Color = SKColor.Parse("#43AC16")
@@ -89,7 +89,7 @@ public partial class ResultsPage : ContentPage
                             Label = "Liberal",
                             Color = SKColor.Parse("#144785")
                         },
-                        new ChartEntry(104234)
+                        new ChartEntry(124234)
                         {
                             Label = "Moderate",
                             Color = SKColor.Parse("#D47DDC")
@@ -99,7 +99,7 @@ public partial class ResultsPage : ContentPage
                             Label = "Conservative",
                             Color = SKColor.Parse("#BB2823")
                         },
-                        new ChartEntry(20139)
+                        new ChartEntry(10139)
                         {
                             Label = "Reactionary",
                             Color = SKColor.Parse("#BDA127")
@@ -108,6 +108,9 @@ public partial class ResultsPage : ContentPage
                 LabelTextSize = 25,
                 LabelOrientation = Orientation.Horizontal,
                 ShowYAxisLines = true,
+                ShowYAxisText = true,
+                ValueLabelTextSize = 25,
+                ValueLabelOption = ValueLabelOption.TopOfElement
             };
 
             _viewModel.CalculateResult();

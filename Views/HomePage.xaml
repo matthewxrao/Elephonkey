@@ -2,15 +2,66 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             xmlns:models="clr-namespace:Elephonkey.Models"
+             xmlns:viewmodels="clr-namespace:Elephonkey.ViewModels"
              x:Class="Elephonkey.Views.HomePage"
              Title="">
+
+    <ContentPage.Resources>
+        <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">
+            <StackLayout Orientation="Vertical" Margin="20,0,0,10" WidthRequest="200" HeightRequest="200">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Frame Padding="0" IsClippedToBounds="True" BorderColor="Transparent">
+                    <Image Source="{Binding ImageURL}" HeightRequest="130" WidthRequest="250" Aspect="AspectFill" />
+                </Frame>
+                <Label Text="{Binding Title}" Margin="0,4,0,0" FontSize="13" FontFamily="PoppinsSemibold" MaxLines="2"/>
+                <StackLayout Orientation="Horizontal" Spacing="2">
+                    <Label Text="{Binding Category}" TextColor="{StaticResource Primary}" FontSize="12"/>
+                    <Label Text="·" FontAttributes="Bold" TextColor="{StaticResource Gray200}" FontSize="12"/>
+                    <Label Text="{Binding Time}" TextColor="{StaticResource Gray200}" FontSize="12"/>
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <VerticalStackLayout Spacing="0" Padding="15,5">
+        <VerticalStackLayout Spacing="0" Padding="20,5">
 
             <Image Source="elephonkey.png" HeightRequest="50"/>
 
-            <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="10,25,0,0"/>
-            <Label Text="{Binding name}" FontFamily="Serif" FontAttributes="Italic" FontSize="15" Margin="10,0,0,50"/>
+            <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="0,15,0,0"/>
+            <Label Text="{Binding Name}" FontFamily="Serif" FontAttributes="Italic" FontSize="15" Margin="0,0,0,5"/>
+
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,4">
+                <Label Text="Latest news" FontFamily="NotoSerifBold" FontSize="15" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Show All" HorizontalOptions="End" FontSize="15" TextColor="CornflowerBlue" VerticalOptions="End"/>
+            </StackLayout>
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,4">
+                <Label Text="Headlines" FontFamily="NotoSerifBold" FontSize="15" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Show All" HorizontalOptions="End" FontSize="15" TextColor="CornflowerBlue" VerticalOptions="End"/>
+            </StackLayout>
+
+            <FlexLayout BindableLayout.ItemsSource="{Binding Headlines}"
+                        Wrap="Wrap"
+                        Margin="20,0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#f2f2f2"
+                               BorderColor="Transparent"
+                               CornerRadius="4"
+                               Padding="8,2"
+                               Margin="0,0,4,10">
+                            <Label Text="{Binding .}" FontFamily="Poppins" VerticalOptions="Center"/>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
 
         </VerticalStackLayout>
     </ContentPage.Content>

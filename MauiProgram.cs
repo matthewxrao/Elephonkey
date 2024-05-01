@@ -1,4 +1,7 @@
-﻿using Microcharts.Maui;
+﻿using Elephonkey.Service;
+using Elephonkey.ViewModels;
+using Elephonkey.Views;
+using Microcharts.Maui;
 using Microsoft.Extensions.Logging;
 
 namespace Elephonkey
@@ -10,6 +13,8 @@ namespace Elephonkey
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .RegisterAppServices()
+                .RegisterViewModels()
                 .UseMicrocharts()
                 .ConfigureFonts(fonts =>
                 {
@@ -28,6 +33,24 @@ namespace Elephonkey
 #endif
 
             return builder.Build();
+        }
+
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<INewsService, MockNewsService>();
+
+            return mauiAppBuilder;
+        }
+
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddTransient<HomePageViewModel>();
+            mauiAppBuilder.Services.AddTransient<ArticleViewModel>();
+
+            mauiAppBuilder.Services.AddTransient<HomePage>();
+            mauiAppBuilder.Services.AddTransient<ArticlePage>();
+
+            return mauiAppBuilder;
         }
     }
 }
