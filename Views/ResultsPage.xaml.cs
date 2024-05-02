@@ -109,7 +109,7 @@ public partial class ResultsPage : ContentPage
                 LabelTextSize = 25,
                 LabelOrientation = Orientation.Horizontal,
                 ValueLabelTextSize = 25,
-                ValueLabelOption = ValueLabelOption.TopOfElement,
+                ValueLabelOption = ValueLabelOption.OverElement,
                 BackgroundColor = SKColors.Transparent,
                 BarAreaAlpha = 0
             };

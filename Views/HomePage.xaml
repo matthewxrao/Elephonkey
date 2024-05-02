@@ -16,6 +16,14 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FileImageSource File="elephonkey.png"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
 
     <ContentPage.Resources>
         <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">

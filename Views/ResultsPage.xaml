@@ -26,11 +26,11 @@
                 <micro:ChartView IsEnabled="{Binding QuizComplete}" x:Name="ResultChart" HeightRequest="250" Margin="0,20,0,15"/>
                 <Image Source="legend.png" HeightRequest="50"/>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="5">
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="5" Margin="0,6,7,0">
                     <Label Text="Your type is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
                     <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
                 </HorizontalStackLayout>
-                <Label Text="See how other users compare" FontSize="10" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,15,7,0"/>
+                <Label Text="See how other users compare" FontSize="10" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,5,7,0"/>
 
                 <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="UserChart" HeightRequest="275" Margin="0,15,0,0"/>
             </VerticalStackLayout>
