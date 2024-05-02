@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Elephonkey.Views.SettingsPage"
              Title="">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
+            <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
+            <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
+
+            <Label Text="Settings" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
     <VerticalStackLayout>
         <Button Margin="0,150,0,0" HeightRequest="60" Text="Logout" CornerRadius="5" Command="{Binding LogoutCommand}" BackgroundColor="Red" TextColor="White"/>
     </VerticalStackLayout>

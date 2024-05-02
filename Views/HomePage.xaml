@@ -5,67 +5,85 @@
              xmlns:models="clr-namespace:Elephonkey.Models"
              xmlns:viewmodels="clr-namespace:Elephonkey.ViewModels"
              x:Class="Elephonkey.Views.HomePage"
-             
              Title="">
+    
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
+            <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
+            <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
+
+            <Label Text="Home" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
 
     <ContentPage.Resources>
         <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">
-            <StackLayout Orientation="Vertical" Margin="0,0,0,5" WidthRequest="200" HeightRequest="200">
+            <StackLayout Orientation="Vertical" WidthRequest="150" Spacing="5">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Frame Padding="0" IsClippedToBounds="True" BorderColor="Transparent">
-                    <Image Source="{Binding ImageURL}" HeightRequest="130" WidthRequest="250" Aspect="AspectFill" />
-                </Frame>
-                <Label Text="{Binding Title}" Margin="0,4,0,0" FontSize="13" FontFamily="PoppinsSemibold" MaxLines="2"/>
-                <StackLayout Orientation="Horizontal" Spacing="2">
-                    <Label Text="{Binding Category}" TextColor="{StaticResource Primary}" FontSize="12"/>
-                    <Label Text="·" FontAttributes="Bold" TextColor="{StaticResource Gray200}" FontSize="12"/>
-                    <Label Text="{Binding Time}" TextColor="{StaticResource Gray200}" FontSize="12"/>
+                <Image Source="{Binding ImageURL}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" Margin="0,0,0,20"/>
+                <Label Text="{Binding Title}" Margin="0,-15,0,0" FontSize="14" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="2"/>
+                <StackLayout Orientation="Horizontal" Spacing="2" Margin="0,4">
+                    <Label Text="{Binding Category}" FontAttributes="Bold" FontSize="10" TextTransform="Uppercase"/>
+                    <Label Text="·" FontAttributes="Bold" TextColor="{StaticResource Gray200}" FontSize="10"/>
+                    <Label Text="{Binding Time}" TextColor="{StaticResource Gray200}" FontAttributes="Bold" FontSize="10"/>
                 </StackLayout>
             </StackLayout>
         </DataTemplate>
-        
+
+        <DataTemplate x:DataType="models:Article" x:Key="FeatureTemplate">
+            <StackLayout Orientation="Vertical" WidthRequest="363" Spacing="5">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="{Binding Title}" FontSize="25" Padding="0" FontFamily="Serif" FontAttributes="Bold"/>
+                <Label Text="Filler description stuff" FontFamily="Serif" TextColor="LightGray" FontSize="14"/>
+                <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="Gray" FontSize="10"/>
+                <Image Source="{Binding ImageURL}" HeightRequest="330" WidthRequest="363" Aspect="AspectFill" Margin="0,0,0,5"/>
+            </StackLayout>
+        </DataTemplate>
+
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <VerticalStackLayout Spacing="0" Padding="10,5">
+        <ScrollView Orientation="Vertical">
+            <StackLayout Spacing="0" Padding="15,5">
 
-            <Image Source="elephonkey.png" HeightRequest="50"/>
+                <!--FeaturedArticle-->
+                
+                <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding FeaturedArticle}" BindableLayout.ItemTemplate="{StaticResource FeatureTemplate}"/>
 
-            <Label Text="Welcome," FontFamily="Serif" FontSize="15" FontAttributes="Italic" Margin="0,15,0,0"/>
-            <Label Text="{Binding Name}" FontFamily="Serif" FontAttributes="Italic" FontSize="15" Margin="0,0,0,5"/>
-            <Frame BackgroundColor="Transparent" HeightRequest="225">
-                <Frame.Shadow>
-                    <Shadow Brush="Black"
-                            Radius="10"
-                            Opacity="0.2"/>
-                </Frame.Shadow>
+                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+
+                <!--Bias-->
+
+                <!--Carousel-->
+                
                 <StackLayout>
-                    <Label Text="Latest news" FontFamily="PoppinsSB" FontAttributes="Bold" FontSize="15" HorizontalOptions="StartAndExpand"/>
-
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/> 
                     </ScrollView>
                 </StackLayout>
-            </Frame>
 
-            <VerticalStackLayout>
-                <Label Text="Headlines" FontFamily="PoppinsSB" FontAttributes="Bold" FontSize="15" HorizontalOptions="StartAndExpand"/>
-
-                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Headlines}"
-                            Margin="20,0">  
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding .}" FontFamily="Poppins" VerticalOptions="Center"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </VerticalStackLayout>
-            </VerticalStackLayout>
-            
-
-        </VerticalStackLayout>
+                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                
+                
+                <!--Headlines-->
+                
+                <StackLayout Padding="0,10">
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Headlines}" Margin="0,0" >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding .}" FontSize="14" FontFamily="Poppins" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

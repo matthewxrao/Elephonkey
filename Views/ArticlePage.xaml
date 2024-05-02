@@ -4,7 +4,22 @@
              xmlns:viewmodels="clr-namespace:Elephonkey.ViewModels"
              xmlns:views="clr-namespace:Elephonkey.Views"
              x:Class="Elephonkey.Views.ArticlePage"
+             Shell.BackgroundColor="Black"
              Title="">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
+            <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
+            <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
+
+            <Label Text="Article" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IconOverride="back.png"/>
+    </Shell.BackButtonBehavior>
+
 
     <VerticalStackLayout>
 

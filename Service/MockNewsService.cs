@@ -110,6 +110,18 @@ namespace Elephonkey.Service
             };
         }
 
+        public ICollection<Article> GetFeaturedArticle()
+        {
+            return new List<Article>()
+            {
+                new Article("013",
+                    "Dictum fusce ut placerat orci nulla pellentesque.",
+                    "Volutpat lacus laoreet non curabitur gravida arcu. Quis imperdiet massa tincidunt nunc pulvinar sapien et.",
+                    "https://picsum.photos/seed/five/300/200",
+                    "Business", "10m ago"),
+            };
+        }
+
         public string GetArticleBody(string articleId)
         {
             return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor dignissim convallis aenean et tortor at risus viverra adipiscing. Maecenas pharetra convallis posuere morbi leo urna molestie. Tellus molestie nunc non blandit massa. Tempor orci eu lobortis elementum nibh. Posuere sollicitudin aliquam ultrices sagittis orci. Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus. Lorem dolor sed viverra ipsum nunc aliquet bibendum. Ut porttitor leo a diam sollicitudin tempor. Eu facilisis sed odio morbi. Semper feugiat nibh sed pulvinar proin gravida. Ullamcorper sit amet risus nullam eget felis. Turpis massa sed elementum tempus egestas sed sed risus. Non nisi est sit amet facilisis magna etiam tempor orci. Nibh praesent tristique magna sit amet purus gravida. Lacinia quis vel eros donec ac odio tempor orci. Lectus sit amet est placerat in. Euismod quis viverra nibh cras pulvinar mattis nunc. Auctor elit sed vulputate mi. Turpis in eu mi bibendum neque egestas." +

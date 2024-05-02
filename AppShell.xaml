@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mylogin="clr-namespace:Elephonkey.Views"
     Shell.FlyoutBehavior="Disabled"
+    Shell.BackgroundColor='Black'
     x:Name="MyAppShell">
 
     <FlyoutItem Route="Login" x:Name="MyLoginPage">

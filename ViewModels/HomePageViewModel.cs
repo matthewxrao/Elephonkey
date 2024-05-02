@@ -15,6 +15,8 @@ namespace Elephonkey.ViewModels
 
             this.HomePageArticles = news.GetHomePageArticles();
 
+            this.FeaturedArticle = news.GetFeaturedArticle();
+
             this.TappedCommand = new Command<Article>((article) =>
             {
                 var query = new Dictionary<string, object>()
@@ -28,6 +30,7 @@ namespace Elephonkey.ViewModels
         public ICollection<string> Headlines { get; set; }
 
         public ICollection<Article> HomePageArticles { get; set; }
+        public ICollection<Article> FeaturedArticle { get; set; }
 
         public Command<Article> TappedCommand { get; set; }
     }

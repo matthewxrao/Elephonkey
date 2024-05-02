@@ -5,50 +5,59 @@
              x:Class="Elephonkey.Views.SurveyPage"
              Title="">
 
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
+            <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
+            <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
+
+            <Label Text="Survey" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="15,5">
 
-            <Image Source="elephonkey.png" HeightRequest="50"/>
-
             <VerticalStackLayout HorizontalOptions="Center" Spacing="10" IsVisible="{Binding QuizIncomplete}">
-                <Label Text="{Binding CurrentQuestion}" Margin="0,50,0,0" Padding="4" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Italic" WidthRequest="320" HeightRequest="120"/>
+                <Label Text="{Binding CurrentQuestion}" Margin="0,50,0,0" Padding="4" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" FontFamily="Serif" FontAttributes="Italic" WidthRequest="320" HeightRequest="100"/>
 
-                <Button Text="Strongly Agree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
-                        BackgroundColor="#F2F2F2"
+                <BoxView HeightRequest="0.5" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,20"/>
+                
+                <Button Text="Strongly Agree" FontSize="14" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="White"
+                        BackgroundColor="Transparent"
                         Padding="4"
-                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        MinimumWidthRequest="300" MinimumHeightRequest="80" CornerRadius="6"
                         Command="{Binding StronglyAgreeCommand}" />
 
-                <Button Text="Agree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
-                        BackgroundColor="#F2F2F2"
+                <Button Text="Agree" FontSize="14" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="White"
+                        BackgroundColor="Transparent"
                         Padding="4"
-                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        MinimumWidthRequest="300" MinimumHeightRequest="80" CornerRadius="6"
                         Command="{Binding AgreeCommand}" />
 
-                <Button Text="Neutral" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
-                        BackgroundColor="#F2F2F2"
+                <Button Text="Neutral" FontSize="14" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="White"
+                        BackgroundColor="Transparent"
                         Padding="4"
-                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        MinimumWidthRequest="300" MinimumHeightRequest="80" CornerRadius="6"
                         Command="{Binding NeutralCommand}" />
 
-                <Button Text="Disagree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
-                        BackgroundColor="#F2F2F2"
+                <Button Text="Disagree" FontSize="14" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="White"
+                        BackgroundColor="Transparent"
                         Padding="4"
-                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        MinimumWidthRequest="300" MinimumHeightRequest="80" CornerRadius="6"
                         Command="{Binding DisagreeCommand}" />
 
 
-                <Button Text="Strongly Disagree" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black" 
-                        BackgroundColor="#F2F2F2"
+                <Button Text="Strongly Disagree" FontSize="14" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="White" 
+                        BackgroundColor="Transparent"
                         Padding="4"
-                        MinimumWidthRequest="300" MinimumHeightRequest="75" CornerRadius="6"
+                        MinimumWidthRequest="300" MinimumHeightRequest="80" CornerRadius="6"
                         Command="{Binding StronglyDisagreeCommand}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout IsVisible="{Binding QuizComplete}" Padding="20">
 
                 <Image Source="completedsurvey.png" HeightRequest="175" Margin="0,100,0,0"/>
-                <Label Text="Quiz Complete" FontSize="20" FontAttributes="Bold"  FontFamily="Serif" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Label Text="Quiz Complete" FontSize="20" FontAttributes="Bold"  FontFamily="Serif" TextColor="White" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
                 
                 <Button Text="View Results" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
                         BackgroundColor="#F2F2F2" 

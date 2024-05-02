@@ -5,18 +5,25 @@
              xmlns:converters="clr-namespace:Elephonkey.Service;assembly=Elephonkey"
              x:Class="Elephonkey.Views.ResultsPage"
              Title="">
-    
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
+            <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
+            <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
+
+            <Label Text="Results" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
     <ContentPage.Resources>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="15,5" >
-            <Image Source="elephonkey.png" HeightRequest="50"/>
-
             <VerticalStackLayout IsVisible="{Binding QuizComplete}">
-                
-                <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="ResultChart" HeightRequest="250" Margin="0,20,0,15"/>
+
+                <micro:ChartView IsEnabled="{Binding QuizComplete}" x:Name="ResultChart" HeightRequest="250" Margin="0,20,0,15"/>
                 <Image Source="legend.png" HeightRequest="50"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="5">

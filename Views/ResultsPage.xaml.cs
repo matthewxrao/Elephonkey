@@ -73,44 +73,45 @@ public partial class ResultsPage : ContentPage
                         } 
                 },
                 LabelMode = LabelMode.None,
+                BackgroundColor = SKColors.Transparent
             };
 
             UserChart.Chart = new BarChart
             {
                 Entries = new[]
                 {
-                        new ChartEntry(24823)
-                        {
-                            Label = "Radical",
-                            Color = SKColor.Parse("#43AC16")
-                        },
-                        new ChartEntry(90123)
-                        {
-                            Label = "Liberal",
-                            Color = SKColor.Parse("#144785")
-                        },
-                        new ChartEntry(124234)
-                        {
-                            Label = "Moderate",
-                            Color = SKColor.Parse("#D47DDC")
-                        },
-                        new ChartEntry(89215)
-                        {
-                            Label = "Conservative",
-                            Color = SKColor.Parse("#BB2823")
-                        },
-                        new ChartEntry(10139)
-                        {
-                            Label = "Reactionary",
-                            Color = SKColor.Parse("#BDA127")
-                        }
+                    new ChartEntry(24823)
+                    {
+                        Label = "Radical",
+                        Color = SKColor.Parse("#43AC16")
+                    },
+                    new ChartEntry(90123)
+                    {
+                        Label = "Liberal",
+                        Color = SKColor.Parse("#144785")
+                    },
+                    new ChartEntry(124234)
+                    {
+                        Label = "Moderate",
+                        Color = SKColor.Parse("#D47DDC")
+                    },
+                    new ChartEntry(89215)
+                    {
+                        Label = "Conservative",
+                        Color = SKColor.Parse("#BB2823")
+                    },
+                    new ChartEntry(10139)
+                    {
+                        Label = "Reactionary",
+                        Color = SKColor.Parse("#BDA127")
+                    }
                 },
                 LabelTextSize = 25,
                 LabelOrientation = Orientation.Horizontal,
-                ShowYAxisLines = true,
-                ShowYAxisText = true,
                 ValueLabelTextSize = 25,
-                ValueLabelOption = ValueLabelOption.TopOfElement
+                ValueLabelOption = ValueLabelOption.TopOfElement,
+                BackgroundColor = SKColors.Transparent,
+                BarAreaAlpha = 0
             };
 
             _viewModel.CalculateResult();
