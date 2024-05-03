@@ -83,35 +83,49 @@ public partial class ResultsPage : ContentPage
                     new ChartEntry(24823)
                     {
                         Label = "Radical",
-                        Color = SKColor.Parse("#43AC16")
+                        Color = SKColor.Parse("#95FFF5"),
+                        ValueLabel = "24823",
+                        ValueLabelColor = SKColor.Parse("FFFFFF")
                     },
                     new ChartEntry(90123)
                     {
                         Label = "Liberal",
-                        Color = SKColor.Parse("#144785")
+                        Color = SKColor.Parse("#95ABFF"),
+                        ValueLabel = "90123",
+                        ValueLabelColor = SKColor.Parse("FFFFFF")
                     },
                     new ChartEntry(124234)
                     {
                         Label = "Moderate",
-                        Color = SKColor.Parse("#D47DDC")
+                        Color = SKColor.Parse("#C095FF"),
+                        ValueLabel = "124234",
+                        ValueLabelColor = SKColor.Parse("FFFFFF")
                     },
                     new ChartEntry(89215)
                     {
                         Label = "Conservative",
-                        Color = SKColor.Parse("#BB2823")
+                        Color = SKColor.Parse("#CC3B51"),
+                        ValueLabel = "89215",
+                        ValueLabelColor = SKColor.Parse("FFFFFF")
                     },
                     new ChartEntry(10139)
                     {
                         Label = "Reactionary",
-                        Color = SKColor.Parse("#BDA127")
+                        Color = SKColor.Parse("#880D20"),
+                        ValueLabel = "10139",
+                        ValueLabelColor = SKColor.Parse("FFFFFF")
                     }
                 },
                 LabelTextSize = 25,
                 LabelOrientation = Orientation.Horizontal,
                 ValueLabelTextSize = 25,
-                ValueLabelOption = ValueLabelOption.OverElement,
+                ValueLabelOption = ValueLabelOption.TopOfElement,
+                ValueLabelOrientation = Orientation.Horizontal,
+                LabelColor = SKColor.Parse("FFFFFF"),
+                ShowYAxisLines = true,
                 BackgroundColor = SKColors.Transparent,
-                BarAreaAlpha = 0
+                BarAreaAlpha = 0,
+                IsAnimated = false,
             };
 
             _viewModel.CalculateResult();

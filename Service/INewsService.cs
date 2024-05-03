@@ -9,11 +9,10 @@ namespace Elephonkey.Service
 {
     public interface INewsService
     {
-        ICollection<string> GetHeadlines();
+        ICollection<Article> GetHeadlines();
         ICollection<Article> GetConservativeArticles();
         ICollection<Article> GetLiberalArticles();
         ICollection<Article> GetHomePageArticles();
         ICollection<Article> GetFeaturedArticle();
-        string GetArticleBody(string articleId);
     }
 }

@@ -344,5 +344,12 @@ namespace Elephonkey.ViewModels
 
             FinalPoints.QuizActive = true;
         }
+
+        [RelayCommand]
+        public static void Settings()
+        {
+            // Navigate to the ResultsPage
+            Shell.Current.GoToAsync(state: "//Settings");
+        }
     }
 }

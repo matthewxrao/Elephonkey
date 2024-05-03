@@ -1,23 +1,47 @@
-﻿using Elephonkey.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using Elephonkey.Models;
 using Elephonkey.Service;
 using Microcharts;
 using SkiaSharp;
+using System.Diagnostics;
 
 namespace Elephonkey.ViewModels
 {
-    public class HomePageViewModel
+    public partial class HomePageViewModel
     {
         public string Name { get; set; } = TextModel.myName;
 
+        public ICollection<Article> Headlines { get; set; }
+        public ICollection<Article> HomePageArticles { get; set; }
+        public ICollection<Article> FeaturedArticle { get; set; }
+
+        public Command<Article> TappedCommand { get; set; }
+
         public HomePageViewModel(INewsService news)
         {
-            this.Headlines = news.GetHeadlines();
+            Initialize(news);
+        }
 
-            this.HomePageArticles = news.GetHomePageArticles();
+        private void Initialize(INewsService news)
+        {
+            try
+            {
+                Headlines = news.GetHeadlines();
+                Debug.WriteLine($"Number of headlines fetched: {Headlines.Count}");
 
-            this.FeaturedArticle = news.GetFeaturedArticle();
+                HomePageArticles = news.GetHomePageArticles();
+                Debug.WriteLine($"Number of homepage articles fetched: {HomePageArticles.Count}");
 
-            this.TappedCommand = new Command<Article>((article) =>
+                FeaturedArticle = news.GetFeaturedArticle();
+                Debug.WriteLine($"Number of featured articles fetched: {FeaturedArticle.Count}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error fetching articles: {ex.Message}");
+            }
+
+
+            TappedCommand = new Command<Article>((article) =>
             {
                 var query = new Dictionary<string, object>()
                 {
@@ -27,12 +51,12 @@ namespace Elephonkey.ViewModels
             });
         }
 
-        public ICollection<string> Headlines { get; set; }
-
-        public ICollection<Article> HomePageArticles { get; set; }
-        public ICollection<Article> FeaturedArticle { get; set; }
-
-        public Command<Article> TappedCommand { get; set; }
+        [RelayCommand]
+        public static void Settings()
+        {
+            // Navigate to the ResultsPage
+            Shell.Current.GoToAsync(state: "//Settings");
+        }
     }
 }
 

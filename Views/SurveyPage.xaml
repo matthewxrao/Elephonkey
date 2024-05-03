@@ -14,6 +14,15 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FileImageSource File="profile.png"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
     <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Padding="15,5">
 

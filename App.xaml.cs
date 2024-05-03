@@ -1,7 +1,6 @@
 ﻿using Elephonkey.Models;
 using Elephonkey.Service;
 using Elephonkey.Views;
-using Microsoft.EntityFrameworkCore;
 
 namespace Elephonkey
 {
@@ -11,7 +10,7 @@ namespace Elephonkey
         {
             
             InitializeComponent();
-
+            
             MainPage = new AppShell();
         }
     }

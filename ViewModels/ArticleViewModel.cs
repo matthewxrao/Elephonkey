@@ -15,11 +15,9 @@ namespace Elephonkey.ViewModels
         {
             this.Title = a.Title;
             this.ImageURL = a.ImageURL;
-            this.Body = news.GetArticleBody(a.Id);
+            this.Body = a.Body;
             this.Time = a.Time;
         }
-
-
 
         public string Title { get; set; }
 
@@ -34,6 +32,13 @@ namespace Elephonkey.ViewModels
         {
             // Navigate to the ResultsPage
             Shell.Current.GoToAsync(state: "//Home");
+        }
+
+        [RelayCommand]
+        public static void Settings()
+        {
+            // Navigate to the ResultsPage
+            Shell.Current.GoToAsync(state: "//Settings");
         }
     }
 }

@@ -17,7 +17,7 @@
                 <Label Text="Email" FontFamily="PoppinsSB" FontAttributes="Bold" TextColor="LightGray" />
                 <Border Background="Transparent" WidthRequest="325">
                     <StackLayout Padding="2,0">
-                        <Entry Text="{Binding MyloginRequestModel.UserName}" Margin="{OnPlatform Android='0,0', iOS='0,10'}" FontSize="18"/>
+                        <Entry Text="{Binding MyloginRequestModel.UserName}" TextColor="White"  Margin="{OnPlatform Android='0,0', iOS='0,10'}"   FontSize="18"/>
                     </StackLayout>
                 </Border>
             </VerticalStackLayout>

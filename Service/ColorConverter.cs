@@ -28,15 +28,15 @@ namespace Elephonkey.Service
             switch (colorName.ToLower())
             {
                 case "red":
-                    return "#BB2823";
+                    return "#CC3B51";
                 case "green":
-                    return "#43AC16";
+                    return "#95FFF5";
                 case "blue":
-                    return "#144785";
+                    return "#95ABFF";
                 case "purple":
-                    return "#D47DDC";
+                    return "#C095FF";
                 case "yellow":
-                    return "#BDA127";
+                    return "#880D20";
                 default:
                     return "#000000";
             }

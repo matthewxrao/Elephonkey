@@ -11,43 +11,48 @@
         <HorizontalStackLayout VerticalOptions="Center" Spacing="5">
             <Image Source="elephonkey.png" HeightRequest="30" VerticalOptions="End"/>
             <Label Text="ELEPHONKEY  |" FontFamily="PoppinsB"  FontAttributes="Bold" FontSize="15" VerticalOptions="End"/>
-
             <Label Text="Article" FontFamily="Poppins" FontSize="15" TextColor="LightGray" VerticalOptions="End"/>
         </HorizontalStackLayout>
     </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FileImageSource File="profile.png"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IconOverride="back.png"/>
     </Shell.BackButtonBehavior>
 
 
-    <VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+            <Image Source="{Binding ImageURL}" HeightRequest="300" Aspect="AspectFill"/>
+            <Label Text="{Binding Title}"
+       FontFamily="NotoSerifBold"
+       FontSize="26"
+       Margin="20,10"/>
+            <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="10">
+                <Frame WidthRequest="32" HeightRequest="32" Padding="0" CornerRadius="16"
+           BackgroundColor="{StaticResource Gray200}" BorderColor="Transparent">
+                    <Label Text="{x:Static views:MaterialDesignIcons.AccountCircle}"
+               FontFamily="Material"
+               FontSize="28"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+                </Frame>
+                <Label Text="{Binding Time}"
+           VerticalOptions="Center"
+           TextColor="{StaticResource Gray400}"/>
+            </StackLayout>
 
-        <ScrollView>
-            <VerticalStackLayout Spacing="10">
-                <Image Source="{Binding ImageURL}" HeightRequest="300" Aspect="AspectFill"/>
-                <Label Text="{Binding Title}"
-               FontFamily="NotoSerifBold"
-               FontSize="26"
-               Margin="20,10"/>
-                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="10">
-                    <Frame WidthRequest="32" HeightRequest="32" Padding="0" CornerRadius="16"
-                   BackgroundColor="{StaticResource Gray200}" BorderColor="Transparent">
-                        <Label Text="{x:Static views:MaterialDesignIcons.AccountCircle}"
-                       FontFamily="Material"
-                       FontSize="28"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       TextColor="White"/>
-                    </Frame>
-                    <Label Text="{Binding Time}"
-                   VerticalOptions="Center"
-                   TextColor="{StaticResource Gray400}"/>
-                </StackLayout>
-                <Label Text="{Binding Body}"
-               Margin="20,0"
-               FontSize="16"/>
-            </VerticalStackLayout>
-        </ScrollView>
-    </VerticalStackLayout>
+            <Label Text="{Binding Body}"
+       Margin="20,0"
+       FontSize="16"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

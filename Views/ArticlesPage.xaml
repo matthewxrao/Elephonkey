@@ -12,6 +12,14 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FileImageSource File="profile.png"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
     <VerticalStackLayout>
         <Label 
             Text="Welcome to articles page"

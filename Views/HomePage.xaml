@@ -19,7 +19,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding SettingsCommand}">
             <ToolbarItem.IconImageSource>
-                <FileImageSource File="elephonkey.png"/>
+                <FileImageSource File="profile.png"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -27,29 +27,46 @@
 
     <ContentPage.Resources>
         <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">
-            <StackLayout Orientation="Vertical" WidthRequest="150" Spacing="5">
+            <StackLayout Orientation="Vertical" WidthRequest="175" Spacing="5">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Image Source="{Binding ImageURL}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" Margin="0,0,0,20"/>
+                <Image Source="{Binding ImageURL}" HeightRequest="150" WidthRequest="175" Aspect="AspectFill" Margin="0,0,0,20"/>
                 <Label Text="{Binding Title}" Margin="0,-15,0,0" FontSize="14" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="2"/>
                 <StackLayout Orientation="Horizontal" Spacing="2" Margin="0,4">
                     <Label Text="{Binding Category}" FontAttributes="Bold" FontSize="10" TextTransform="Uppercase"/>
                     <Label Text="·" FontAttributes="Bold" TextColor="{StaticResource Gray200}" FontSize="10"/>
-                    <Label Text="{Binding Time}" TextColor="{StaticResource Gray200}" FontAttributes="Bold" FontSize="10"/>
+                    <Label Text="{Binding Author}" TextColor="{StaticResource Gray200}" FontAttributes="Bold" FontSize="10"/>
                 </StackLayout>
             </StackLayout>
         </DataTemplate>
 
         <DataTemplate x:DataType="models:Article" x:Key="FeatureTemplate">
-            <StackLayout Orientation="Vertical" WidthRequest="363" Spacing="5">
+            <StackLayout Orientation="Vertical" HeightRequest="400" WidthRequest="400" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{Binding Title}" FontSize="25" Padding="0" FontFamily="Serif" FontAttributes="Bold"/>
-                <Label Text="Filler description stuff" FontFamily="Serif" TextColor="LightGray" FontSize="14"/>
-                <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="Gray" FontSize="10"/>
-                <Image Source="{Binding ImageURL}" HeightRequest="330" WidthRequest="363" Aspect="AspectFill" Margin="0,0,0,5"/>
+                <StackLayout Orientation="Vertical" Spacing="5" >
+                    <Label Text="{Binding Title}" FontSize="25" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="3" WidthRequest="280" HorizontalOptions="Start"/>
+                    <Label Text="Protests have broken out at colleges and universities across the country in connection with the war in Gaza.
+
+Many pro-Palestinian protesters are calling for their colleges to divest of funds from Israeli military operations, while some Jewish students on the campuses have called the protests antisemitic and said they are scared for their safety.
+
+The student protests -- some of which have turned into around-the-clock encampments -- have erupted throughout the nation following arrests and student removals at Columbia University in New York City. Students at schools including Yale University, New York University, Harvard University, University of Texas at Austin, University of Southern California and more have launched protests." 
+                    MaxLines="3" FontFamily="Serif" TextColor="LightGray" FontSize="12" WidthRequest="280" HorizontalOptions="Start"/>
+                    <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="Gray" FontSize="10" />
+                    <Image Source="{Binding ImageURL}" HeightRequest="220" WidthRequest="363" Aspect="AspectFill" VerticalOptions="End" HorizontalOptions="Start"/>
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+
+        <DataTemplate x:DataType="models:Article" x:Key="HeaderTemplate">
+            <StackLayout Orientation="Vertical" Spacing="5">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="{Binding Title}" FontSize="10" Padding="0" FontFamily="Serif" FontAttributes="Bold" TextTransform="Uppercase" MaxLines="1"/>
+                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
             </StackLayout>
         </DataTemplate>
 
@@ -63,7 +80,7 @@
                 
                 <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding FeaturedArticle}" BindableLayout.ItemTemplate="{StaticResource FeatureTemplate}"/>
 
-                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
 
                 <!--Bias-->
 
@@ -75,21 +92,15 @@
                     </ScrollView>
                 </StackLayout>
 
-                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
                 
                 
                 <!--Headlines-->
                 
-                <StackLayout Padding="0,10">
-                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Headlines}" Margin="0,0" >
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding .}" FontSize="14" FontFamily="Poppins" VerticalOptions="Center"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </VerticalStackLayout>
+                <StackLayout>
+                    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Vertical" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource HeaderTemplate}"/>
+                    </ScrollView>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

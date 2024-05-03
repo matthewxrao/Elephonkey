@@ -15,6 +15,14 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FileImageSource File="profile.png"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Resources>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </ContentPage.Resources>
@@ -23,16 +31,16 @@
         <VerticalStackLayout Spacing="0" Padding="15,5" >
             <VerticalStackLayout IsVisible="{Binding QuizComplete}">
 
-                <micro:ChartView IsEnabled="{Binding QuizComplete}" x:Name="ResultChart" HeightRequest="250" Margin="0,20,0,15"/>
+                <micro:ChartView IsEnabled="{Binding QuizComplete}" x:Name="ResultChart" HeightRequest="250" Margin="0,10,0,15"/>
                 <Image Source="legend.png" HeightRequest="50"/>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="5" Margin="0,6,7,0">
-                    <Label Text="Your type is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="5" Margin="0,25,7,0">
+                    <Label Text="Your bias is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
                     <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
                 </HorizontalStackLayout>
                 <Label Text="See how other users compare" FontSize="10" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,5,7,0"/>
 
-                <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="UserChart" HeightRequest="275" Margin="0,15,0,0"/>
+                <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="UserChart" HeightRequest="275" />
             </VerticalStackLayout>
 
             <HorizontalStackLayout IsVisible="{Binding QuizIncomplete}" VerticalOptions="Center" HorizontalOptions="Center">

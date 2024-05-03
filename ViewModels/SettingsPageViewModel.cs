@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows.Input;
 
 namespace Elephonkey.ViewModels
 {
-    public class SettingsPageViewModel
+    public partial class SettingsPageViewModel
     {
         public ICommand LogoutCommand { get; }
 
@@ -20,6 +21,13 @@ namespace Elephonkey.ViewModels
         {
             Preferences.Clear();
             await Shell.Current.GoToAsync("//Login");
+        }
+
+        [RelayCommand]
+        public static void Settings()
+        {
+            // Navigate to the ResultsPage
+            Shell.Current.GoToAsync(state: "//Settings");
         }
     }
 }

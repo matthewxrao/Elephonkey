@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,26 +9,34 @@ namespace Elephonkey.Models
 {
     public class Article
     {
-        public string Id { get; set; }
+        [PrimaryKey, AutoIncrement, Column("Id")]
+        public int Id { get; set; }
+        //[MaxLength(250), Unique]
 
-        public string Title { get; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Party { get; set; }
 
-        public string Subtitle { get; }
+        public string Category { get; set; }
 
-        public string ImageURL { get; }
+        public string Time { get; set; }
+        public string ImageURL { get; set; }
 
-        public string Category { get; }
+        public string Body { get; set; }
 
-        public string Time { get; }
+        //GetConservativeArticles() will retrieve all articles with Conservative = true. GetLiberalArticles() will retrieve all articles with Liberal = true.
+        public Boolean Conservative { get; set; } = false;
 
-        public Article(string id, string title, string subtitle, string imageUrl, string category, string time)
-        {
-            this.Id = id;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.ImageURL = imageUrl;
-            this.Category = category;
-            this.Time = time;
-        }
+        //GetHomePageArticles() will retrieve all articles with HomePage = true
+
+        public Boolean HomePage { get; set; } = false;
+
+        //GetFeaturedArticle() will retrieve all articles with Featured = true
+
+        public Boolean Featured { get; set; } = false;
+
+        //GetHeadlines() will retrieve all articles with Headline = true
+
+        public Boolean Headline { get; set; } = false;
     }
 }

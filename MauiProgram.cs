@@ -1,4 +1,5 @@
-﻿using Elephonkey.Service;
+﻿using Elephonkey.Models;
+using Elephonkey.Service;
 using Elephonkey.ViewModels;
 using Elephonkey.Views;
 using Microcharts.Maui;
@@ -37,7 +38,8 @@ namespace Elephonkey
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<INewsService, MockNewsService>();
+            mauiAppBuilder.Services.AddSingleton<INewsService, ElephonkeyNewsService>();
+            mauiAppBuilder.Services.AddSingleton<SQLiteArticles>(); // Register SQLiteArticles as a singleton service
 
             return mauiAppBuilder;
         }
