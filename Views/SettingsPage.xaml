@@ -13,16 +13,18 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding SettingsCommand}">
-            <ToolbarItem.IconImageSource>
-                <FileImageSource File="profile.png"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
-
-    <VerticalStackLayout>
-        <Button Margin="0,150,0,0" HeightRequest="60" Text="Logout" CornerRadius="5" Command="{Binding LogoutCommand}" BackgroundColor="Red" TextColor="White"/>
-    </VerticalStackLayout>
+    <ContentPage.Content>
+        <VerticalStackLayout Spacing="0" VerticalOptions="Center" Padding="25,65">
+            <StackLayout Orientation="Horizontal" Spacing="200">
+                <Label Text="Notifications" VerticalOptions="Center"/>
+                <Switch OnColor="LawnGreen" ThumbColor="White" BackgroundColor="Transparent"/>
+            </StackLayout>
+            
+            <Button Text="LogOut" FontSize="12" FontAttributes="Bold" FontFamily="PoppinsSB" TextColor="Black"
+                    BackgroundColor="#F2F2F2" 
+                    CornerRadius="5"
+                    Command="{Binding LogoutCommand}" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -48,13 +48,8 @@
                 </StackLayout.GestureRecognizers>
                 <StackLayout Orientation="Vertical" Spacing="5" >
                     <Label Text="{Binding Title}" FontSize="25" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="3" WidthRequest="280" HorizontalOptions="Start"/>
-                    <Label Text="Protests have broken out at colleges and universities across the country in connection with the war in Gaza.
-
-Many pro-Palestinian protesters are calling for their colleges to divest of funds from Israeli military operations, while some Jewish students on the campuses have called the protests antisemitic and said they are scared for their safety.
-
-The student protests -- some of which have turned into around-the-clock encampments -- have erupted throughout the nation following arrests and student removals at Columbia University in New York City. Students at schools including Yale University, New York University, Harvard University, University of Texas at Austin, University of Southern California and more have launched protests." 
-                    MaxLines="3" FontFamily="Serif" TextColor="LightGray" FontSize="12" WidthRequest="280" HorizontalOptions="Start"/>
-                    <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="Gray" FontSize="10" />
+                    <Label Text="Protests have broken out at colleges and universities across the country in connection with the war in Gaza." TextColor="#bfbfbf" FontFamily="Serif"/>
+                    <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="#bfbfbf" FontSize="10" />
                     <Image Source="{Binding ImageURL}" HeightRequest="220" WidthRequest="363" Aspect="AspectFill" VerticalOptions="End" HorizontalOptions="Start"/>
                 </StackLayout>
             </StackLayout>
@@ -65,8 +60,13 @@ The student protests -- some of which have turned into around-the-clock encampme
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=TappedCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{Binding Title}" FontSize="10" Padding="0" FontFamily="Serif" FontAttributes="Bold" TextTransform="Uppercase" MaxLines="1"/>
-                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                <Label Text="{Binding Title}" FontSize="11" Padding="0" FontFamily="Serif" FontAttributes="Bold" TextTransform="Uppercase" MaxLines="1"/>
+                <StackLayout Orientation="Horizontal" Spacing="2" Margin="0,0">
+                    <Label Text="{Binding Party}" FontAttributes="Bold" FontSize="8" TextTransform="Uppercase"/>
+                    <Label Text=" · " FontAttributes="Bold" TextColor="Gray" FontSize="8"/>
+                    <Label Text="{Binding Time}" TextColor="Gray" FontAttributes="Bold" FontSize="8"/>
+                </StackLayout>
+                <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </DataTemplate>
 
@@ -77,26 +77,42 @@ The student protests -- some of which have turned into around-the-clock encampme
             <StackLayout Spacing="0" Padding="15,5">
 
                 <!--FeaturedArticle-->
-                
-                <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding FeaturedArticle}" BindableLayout.ItemTemplate="{StaticResource FeatureTemplate}"/>
 
-                <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding FeaturedArticle}" BindableLayout.ItemTemplate="{StaticResource FeatureTemplate}"/>
 
                 <!--Bias-->
 
+                <Border Padding="5" Margin="10,20,10,20" Stroke="White" StrokeThickness="1" BackgroundColor="Transparent">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+
+                    <StackLayout Orientation="Vertical" Padding="20">
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" HorizontalOptions="Center" Padding="5,0"  IsVisible="{Binding QuizComplete}">
+                            <Label Text="Your bias is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
+                            <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
+                        </StackLayout>
+
+                        <Button Text="Take Survey Now!" BackgroundColor="White" FontSize="10" TextColor="Black" FontFamily="PoppinsB" HeightRequest="35" WidthRequest="125"  CornerRadius="30" IsVisible="{Binding QuizComplete}"/>
+                    </StackLayout>
+                </Border>
+                
                 <!--Carousel-->
                 
                 <StackLayout>
+                    <Label Text="Latest News" FontAttributes="Bold" FontFamily="PoppinsSB" FontSize="12" Margin="0,4" TextTransform="Uppercase"/>
+                    
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                         <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/> 
                     </ScrollView>
                 </StackLayout>
 
-                <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                <BoxView HeightRequest="1" Color="white" HorizontalOptions="FillAndExpand" Margin="0,15,0,6" />
                 
                 
                 <!--Headlines-->
-                
+                <Label Text="Top Headlines" FontAttributes="Bold" FontFamily="PoppinsSB" FontSize="12" Margin="0,4,0,15" TextTransform="Uppercase"/>
+
                 <StackLayout>
                     <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
                         <StackLayout Orientation="Vertical" Spacing="5" BindableLayout.ItemsSource="{Binding HomePageArticles}" BindableLayout.ItemTemplate="{StaticResource HeaderTemplate}"/>

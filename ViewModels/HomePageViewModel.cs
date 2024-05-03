@@ -19,27 +19,14 @@ namespace Elephonkey.ViewModels
 
         public HomePageViewModel(INewsService news)
         {
-            Initialize(news);
-        }
+            Headlines = news.GetHeadlines();
+            Debug.WriteLine($"Number of headlines fetched: {Headlines.Count}");
 
-        private void Initialize(INewsService news)
-        {
-            try
-            {
-                Headlines = news.GetHeadlines();
-                Debug.WriteLine($"Number of headlines fetched: {Headlines.Count}");
+            HomePageArticles = news.GetHomePageArticles();
+            Debug.WriteLine($"Number of homepage articles fetched: {HomePageArticles.Count}");
 
-                HomePageArticles = news.GetHomePageArticles();
-                Debug.WriteLine($"Number of homepage articles fetched: {HomePageArticles.Count}");
-
-                FeaturedArticle = news.GetFeaturedArticle();
-                Debug.WriteLine($"Number of featured articles fetched: {FeaturedArticle.Count}");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error fetching articles: {ex.Message}");
-            }
-
+            FeaturedArticle = news.GetFeaturedArticle();
+            Debug.WriteLine($"Number of featured articles fetched: {FeaturedArticle.Count}");
 
             TappedCommand = new Command<Article>((article) =>
             {

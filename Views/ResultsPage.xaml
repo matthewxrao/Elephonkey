@@ -38,6 +38,7 @@
                     <Label Text="Your bias is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
                     <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
                 </HorizontalStackLayout>
+                
                 <Label Text="See how other users compare" FontSize="10" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,5,7,0"/>
 
                 <micro:ChartView IsEnabled="{Binding QuizComplete}"  x:Name="UserChart" HeightRequest="275" />
