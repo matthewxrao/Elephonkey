@@ -48,7 +48,7 @@
                 </StackLayout.GestureRecognizers>
                 <StackLayout Orientation="Vertical" Spacing="5" >
                     <Label Text="{Binding Title}" FontSize="25" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="3" WidthRequest="280" HorizontalOptions="Start"/>
-                    <Label Text="Protests have broken out at colleges and universities across the country in connection with the war in Gaza." TextColor="#bfbfbf" FontFamily="Serif"/>
+                    <Label Text="Protests have broken out at colleges and universities across the country in connection with the war in Gaza." TextColor="#bfbfbf" FontSize="13" WidthRequest="340" HorizontalOptions="Start" FontFamily="Serif"/>
                     <Label Text="6 MIN READ" FontAttributes="Bold" TextColor="#bfbfbf" FontSize="10" />
                     <Image Source="{Binding ImageURL}" HeightRequest="220" WidthRequest="363" Aspect="AspectFill" VerticalOptions="End" HorizontalOptions="Start"/>
                 </StackLayout>
@@ -82,22 +82,22 @@
 
                 <!--Bias-->
 
-                <Border Padding="5" Margin="10,20,10,20" Stroke="White" StrokeThickness="1" BackgroundColor="Transparent">
+                <Border Padding="5" Margin="10,20,10,20" Stroke="White" StrokeThickness="1" BackgroundColor="Transparent" IsVisible="{Binding QuizComplete}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
 
                     <StackLayout Orientation="Vertical" Padding="20">
-                        <StackLayout Orientation="Horizontal" HeightRequest="30" HorizontalOptions="Center" Padding="5,0"  IsVisible="{Binding QuizComplete}">
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" HorizontalOptions="Center" Padding="5,0">
                             <Label Text="Your bias is" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="0,0,7,0"/>
                             <Label Text="{Binding ResultText}" TextColor="{Binding ResultColor, Converter={StaticResource ColorConverter}}" FontSize="19" FontFamily="Serif" HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
                         </StackLayout>
-
-                        <Button Text="Take Survey Now!" BackgroundColor="White" FontSize="10" TextColor="Black" FontFamily="PoppinsB" HeightRequest="35" WidthRequest="125"  CornerRadius="30" IsVisible="{Binding QuizComplete}"/>
                     </StackLayout>
                 </Border>
-                
-                <!--Carousel-->
+
+                <Button Margin="10,40,10,40" Text="Take Survey Now!" BackgroundColor="White" FontSize="10" TextColor="Black" FontFamily="PoppinsB" HeightRequest="35" WidthRequest="125" Command="{Binding SurveyCommand}" CornerRadius="30" IsVisible="{Binding QuizIncomplete}"/>
+
+            <!--Carousel-->
                 
                 <StackLayout>
                     <Label Text="Latest News" FontAttributes="Bold" FontFamily="PoppinsSB" FontSize="12" Margin="0,4" TextTransform="Uppercase"/>

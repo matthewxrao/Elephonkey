@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Elephonkey.Models"
+             xmlns:viewmodels="clr-namespace:Elephonkey.ViewModels"
              x:Class="Elephonkey.Views.ArticlesPage">
     
     <Shell.TitleView>
@@ -20,10 +22,29 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to articles page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.Resources>
+        <DataTemplate x:DataType="models:Article" x:Key="ArticleTemplate">
+            <StackLayout Orientation="Vertical" WidthRequest="350" Spacing="5">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ArticlesViewModel}}, Path=TappedCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Image Source="{Binding ImageURL}" HeightRequest="150" WidthRequest="350" Aspect="AspectFill" Margin="0,0,0,20"/>
+                <Label Text="{Binding Title}" Margin="0,-15,0,0" FontSize="14" Padding="0" FontFamily="Serif" FontAttributes="Bold" MaxLines="2"/>
+                <StackLayout Orientation="Horizontal" Spacing="2" Margin="0,4">
+                    <Label Text="{Binding Category}" FontAttributes="Bold" FontSize="10" TextTransform="Uppercase"/>
+                    <Label Text="·" FontAttributes="Bold" TextColor="{StaticResource Gray200}" FontSize="10"/>
+                    <Label Text="{Binding Author}" TextColor="{StaticResource Gray200}" FontAttributes="Bold" FontSize="10"/>
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="5" BindableLayout.ItemsSource="{Binding ConservativeArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
+                <StackLayout Orientation="Vertical" Spacing="5" BindableLayout.ItemsSource="{Binding LiberalArticles}" BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

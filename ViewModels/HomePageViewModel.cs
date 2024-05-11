@@ -9,6 +9,13 @@ namespace Elephonkey.ViewModels
 {
     public partial class HomePageViewModel
     {
+
+        // Properties for quiz state and result
+        public bool QuizIncomplete { get; set; }
+        public bool QuizComplete { get; set; }
+        public string ResultText { get; set; }
+        public string ResultColor { get; set; }
+
         public string Name { get; set; } = TextModel.myName;
 
         public ICollection<Article> Headlines { get; set; }
@@ -36,6 +43,12 @@ namespace Elephonkey.ViewModels
                 };
                 Shell.Current.GoToAsync("//Home/article", query);
             });
+
+            ResultText = FinalPoints.ResultText;
+            ResultColor = FinalPoints.ResultColor;
+
+            QuizIncomplete = FinalPoints.QuizActive;
+            QuizComplete = !FinalPoints.QuizActive;
         }
 
         [RelayCommand]
@@ -44,6 +57,12 @@ namespace Elephonkey.ViewModels
             // Navigate to the ResultsPage
             Shell.Current.GoToAsync(state: "//Settings");
         }
+
+        [RelayCommand]
+        public static void Survey()
+        {
+            // Navigate to the ResultsPage
+            Shell.Current.GoToAsync(state: "//Survey");
+        }
     }
 }
-

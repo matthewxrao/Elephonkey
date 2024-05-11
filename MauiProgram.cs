@@ -39,7 +39,7 @@ namespace Elephonkey
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<INewsService, ElephonkeyNewsService>();
-            mauiAppBuilder.Services.AddSingleton<SQLiteArticles>(); // Register SQLiteArticles as a singleton service
+            mauiAppBuilder.Services.AddSingleton<SQLiteArticles>();
 
             return mauiAppBuilder;
         }
@@ -48,9 +48,11 @@ namespace Elephonkey
         {
             mauiAppBuilder.Services.AddTransient<HomePageViewModel>();
             mauiAppBuilder.Services.AddTransient<ArticleViewModel>();
+            mauiAppBuilder.Services.AddTransient<ArticlesViewModel>();
 
             mauiAppBuilder.Services.AddTransient<HomePage>();
             mauiAppBuilder.Services.AddTransient<ArticlePage>();
+            mauiAppBuilder.Services.AddTransient<ArticlesPage>();
 
             return mauiAppBuilder;
         }

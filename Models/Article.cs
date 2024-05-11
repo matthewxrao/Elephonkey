@@ -11,8 +11,6 @@ namespace Elephonkey.Models
     {
         [PrimaryKey, AutoIncrement, Column("Id")]
         public int Id { get; set; }
-        //[MaxLength(250), Unique]
-
         public string Title { get; set; }
         public string Author { get; set; }
         public string Party { get; set; }

@@ -15,9 +15,9 @@
 
 
     <ContentPage.Content>
-        <VerticalStackLayout Spacing="0" VerticalOptions="Center" Padding="25,65">
-            <StackLayout Orientation="Horizontal" Spacing="200">
-                <Label Text="Notifications" VerticalOptions="Center"/>
+        <VerticalStackLayout Spacing="0" VerticalOptions="Center" Padding="25,10">
+            <StackLayout Orientation="Horizontal" Spacing="205">
+                <Label Text="Notifications" FontFamily="PoppinsB" VerticalOptions="Center"/>
                 <Switch OnColor="LawnGreen" ThumbColor="White" BackgroundColor="Transparent"/>
             </StackLayout>
             

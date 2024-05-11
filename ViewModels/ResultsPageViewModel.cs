@@ -61,15 +61,10 @@ namespace Elephonkey.ViewModels
         {
             // Subscribe to events in FinalPoints
             FinalPoints.OnQuizActiveChanged += FinalPoints_OnQuizActiveChanged;
-            FinalPoints.OnFinalDemocraticPointsChanged += FinalPoints_OnPointsChanged;
-            FinalPoints.OnFinalRepublicanPointsChanged += FinalPoints_OnPointsChanged;
-            FinalPoints.OnFinalLibertarianPointsChanged += FinalPoints_OnPointsChanged;
-            FinalPoints.OnFinalGreenPointsChanged += FinalPoints_OnPointsChanged;
-            FinalPoints.OnFinalOtherPointsChanged += FinalPoints_OnPointsChanged;
+            // No need to subscribe to OnResultChanged event anymore
 
             // Update initial values
             UpdatePoints();
-            CalculateResult();
         }
 
         private void FinalPoints_OnQuizActiveChanged(object sender, EventArgs e)
@@ -91,56 +86,11 @@ namespace Elephonkey.ViewModels
             LibertarianPoints = FinalPoints.FinalLibertarianPoints;
             GreenPoints = FinalPoints.FinalGreenPoints;
             OtherPoints = FinalPoints.FinalOtherPoints;
-        }
 
-        public void CalculateResult()
-        {
-            // Get the points from FinalPoints
-            int democraticPoints = FinalPoints.FinalDemocraticPoints;
-            int republicanPoints = FinalPoints.FinalRepublicanPoints;
-            int greenPoints = FinalPoints.FinalGreenPoints;
-            int libertarianPoints = FinalPoints.FinalLibertarianPoints;
-            int otherPoints = FinalPoints.FinalOtherPoints;
-
-            // Calculate liberal and conservative scores
-            int liberalScore = democraticPoints + greenPoints;
-            int conservativeScore = republicanPoints + libertarianPoints;
-
-            // Determine the political leaning
-            if (liberalScore > conservativeScore)
-            {
-                // More liberal leaning
-                ResultText = "liberal";
-                ResultColor = "blue";
-            }
-            else if (conservativeScore > liberalScore)
-            {
-                // More conservative leaning
-                ResultText = "conservative";
-                ResultColor = "red";
-            }
-            else
-            {
-                // Balanced or neutral leaning
-                ResultText = "moderate";
-                ResultColor = "purple";
-            }
-
-            // Further refine the classification based on the extremity of the scores
-            int totalPoints = democraticPoints + republicanPoints + greenPoints + libertarianPoints + otherPoints;
-            double liberalRatio = (double)liberalScore / totalPoints;
-            double conservativeRatio = (double)conservativeScore / totalPoints;
-
-            if (liberalRatio > 0.7)
-            {
-                ResultText = "radical";
-                ResultColor = "green";
-            }
-            else if (conservativeRatio > 0.7)
-            {
-                ResultText = "reactionary";
-                ResultColor = "yellow";
-            }
+            // Update result after updating points
+            FinalPoints.UpdateResult();
+            ResultText = FinalPoints.ResultText;
+            ResultColor = FinalPoints.ResultColor;
         }
 
         // Integer properties for points
@@ -194,7 +144,6 @@ namespace Elephonkey.ViewModels
             FinalPoints.FinalOtherPoints = 0;
 
             UpdatePoints();
-            CalculateResult();
 
             // Set QuizActive to false
             FinalPoints.QuizActive = true;

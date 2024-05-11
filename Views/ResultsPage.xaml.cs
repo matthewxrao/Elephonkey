@@ -128,7 +128,7 @@ public partial class ResultsPage : ContentPage
                 IsAnimated = false,
             };
 
-            _viewModel.CalculateResult();
+            _viewModel.UpdatePoints();
         }
         else
         {

@@ -1,9 +1,13 @@
+using Elephonkey.Service;
+using Elephonkey.ViewModels;
+
 namespace Elephonkey.Views;
 
 public partial class ArticlesPage : ContentPage
 {
-	public ArticlesPage()
-	{
-		InitializeComponent();
-	}
+	public ArticlesPage(INewsService news)
+    {
+        InitializeComponent();
+        this.BindingContext = new ArticlesViewModel(news);
+    }
 }

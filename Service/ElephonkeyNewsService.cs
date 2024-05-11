@@ -1,10 +1,4 @@
 ﻿using Elephonkey.Models;
-using Elephonkey.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elephonkey.Service
 {
@@ -19,27 +13,27 @@ namespace Elephonkey.Service
 
         public ICollection<Article> GetHeadlines()
         {
-            return _sqliteArticles.GetAll<Article>(a => a.Headline).ToList();
+            return _sqliteArticles.GetAllDistinct<Article>(a => a.Headline).ToList();
         }
 
         public ICollection<Article> GetConservativeArticles()
         {
-            return _sqliteArticles.GetAll<Article>(a => a.Conservative).ToList();
+            return _sqliteArticles.GetAllDistinct<Article>(a => a.Conservative && !a.HomePage && !a.Headline && !a.Featured).ToList();
         }
 
         public ICollection<Article> GetLiberalArticles()
         {
-            return _sqliteArticles.GetAll<Article>(a => !a.Conservative).ToList();
+            return _sqliteArticles.GetAllDistinct<Article>(a => !a.Conservative && !a.HomePage && !a.Headline && !a.Featured).ToList();
         }
 
         public ICollection<Article> GetHomePageArticles()
         {
-            return _sqliteArticles.GetAll<Article>(a => a.HomePage).ToList();
+            return _sqliteArticles.GetAllDistinct<Article>(a => a.HomePage).ToList();
         }
 
         public ICollection<Article> GetFeaturedArticle()
         {
-            return _sqliteArticles.GetAll<Article>(a => a.Featured).ToList();
+            return _sqliteArticles.GetAllDistinct<Article>(a => a.Featured).ToList();
         }
     }
 }
