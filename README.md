@@ -11,5 +11,5 @@ App Screenshots:
 ![image](https://github.com/user-attachments/assets/34227702-da58-4d9a-91da-12d9546a267c)
 ![image](https://github.com/user-attachments/assets/095f65b6-e6e9-4b4a-b024-8468b0682541)
 
-
+This app is designed to help users better understand their political leanings and the diverse perspectives surrounding current events. By taking a short survey, users can gain insights into their political ideology, visualized in a clear pie chart. With this understanding, the app curates news articles that align with and challenge their beliefs, fostering a more informed and critical approach to information consumption.
 
